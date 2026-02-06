@@ -1,0 +1,50 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 280px, 280px;
+  gap: 1.5rem;
+}
+
+.listPanel {
+  height: 300px;
+  overflow: auto;
+  padding-right: 0.35rem;
+  padding-bottom: 1rem;
+}
+
+.listPanel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.listPanel::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 999px;
+}
+
+.listPanel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
