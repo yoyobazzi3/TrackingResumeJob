@@ -1,3 +1,4 @@
+<!-- High-level architecture documentation for the backend. -->
 # 🚀 Backend Architecture Overview
 
 This document describes the foundational infrastructure of the **AI Resume Tailoring & Job Tracking Platform**. It outlines the structural decisions and system integrations required for a scalable, production-ready environment.

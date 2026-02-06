@@ -1,7 +1,9 @@
+# Compose file for API + Postgres.
 version: "3.9"
 
 services:
   api:
+    # FastAPI service.
     build: .
     container_name: resume_api
     ports:
@@ -15,6 +17,7 @@ services:
     restart: always
 
   db:
+    # Postgres database service.
     image: postgres:16
     container_name: resume_db
     environment:
@@ -22,9 +25,11 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: resume_ai
     volumes:
+      # Persist database state between runs.
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
 volumes:
+  # Named volume for Postgres data.
   postgres_data:

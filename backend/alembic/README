@@ -1,1 +1,2 @@
 Generic single-database configuration.
+This folder contains Alembic migration scripts and config.

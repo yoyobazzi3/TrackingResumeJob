@@ -1,3 +1,5 @@
+"""Auth service tests."""
+
 import os
 import sys
 import unittest
@@ -13,6 +15,7 @@ from app.services.auth_service import create_user, authenticate_user  # noqa: E4
 
 class TestAuthLoginEmailNormalization(unittest.TestCase):
     def setUp(self) -> None:
+        # Use an in-memory SQLite DB for fast tests.
         self.engine = create_engine(
             "sqlite+pysqlite:///:memory:",
             connect_args={"check_same_thread": False},
@@ -21,10 +24,12 @@ class TestAuthLoginEmailNormalization(unittest.TestCase):
         self.SessionLocal = sessionmaker(bind=self.engine)
 
     def tearDown(self) -> None:
+        # Clean up DB schema after each test.
         Base.metadata.drop_all(self.engine)
         self.engine.dispose()
 
     def test_login_normalizes_email(self) -> None:
+        # Signup and login should normalize the email the same way.
         db = self.SessionLocal()
         try:
             create_user(db, "  Test@Example.com  ", "password123")
