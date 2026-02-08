@@ -22,12 +22,12 @@
 }
 
 .container::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: hsl(220, 13%, 70%);
   border-radius: 999px;
 }
 
 .container::-webkit-scrollbar-track {
-  background: transparent;
+  background: hsl(220, 14%, 96%);
 }
 
 .headerRow {
@@ -43,8 +43,8 @@
 }
 
 .count {
-  background: #0b1220;
-  color: var(--muted);
+  background: var(--secondary);
+  color: var(--muted-foreground);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.2rem 0.6rem;
@@ -66,8 +66,24 @@
 
 .id {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: var(--muted);
+  color: var(--muted-foreground);
   font-size: 0.9rem;
+}
+
+.resumeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--foreground);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.resumeButton:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .button {
@@ -76,9 +92,74 @@
 }
 
 .danger {
-  background: var(--danger);
+  background: var(--destructive);
+  color: var(--destructive-foreground);
 }
 
 .danger:hover {
-  background: var(--danger-700);
+  background: hsl(0, 72%, 46%);
+}
+
+.loading {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  z-index: 50;
+}
+
+.modal {
+  width: min(900px, 95vw);
+  max-height: 80vh;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalHeader h4 {
+  margin: 0;
+}
+
+.modalClose {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.modalClose:hover {
+  background: hsl(220, 14%, 92%);
+}
+
+.modalBody {
+  margin: 0;
+  padding: 1rem 1.25rem 1.5rem;
+  overflow: auto;
+  font-size: 0.85rem;
+  color: var(--foreground);
+  background: var(--secondary);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
 }

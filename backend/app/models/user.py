@@ -1,6 +1,6 @@
 """User model."""
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Boolean
 from app.core.database import Base
 from app.models.base import UUIDBase
@@ -39,4 +39,9 @@ class User(UUIDBase, Base):
         Boolean,
         nullable=False,
         default=True,
+    )
+    job_applications = relationship(
+        "JobApplication",
+        back_populates="user",
+        cascade="all, delete-orphan",
     )

@@ -1,0 +1,316 @@
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.container h2 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.form input,
+.form select {
+  width: 100%;
+  font: inherit;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.2rem);
+  padding: 0.65rem 0.8rem;
+  background: var(--card);
+}
+
+.form select {
+  cursor: pointer;
+}
+
+.form button {
+  width: 100%;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+}
+
+.card strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--foreground);
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.cardLeft,
+.cardRight {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cardRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+
+.card div {
+  color: var(--muted-foreground);
+  margin-top: 0.2rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  width: 220px;
+  max-width: 100%;
+}
+
+.resumeSelect {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  width: 220px;
+  max-width: 100%;
+}
+
+.cardActions {
+  display: grid;
+  gap: 0.4rem;
+  justify-items: end;
+}
+
+.delete {
+  margin-top: 0;
+}
+
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.link:hover {
+  color: hsl(221, 83%, 35%);
+  text-decoration: underline;
+  background: none;
+}
+
+.descriptionEditor {
+  width: 100%;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.1rem);
+  padding: 1rem;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.descriptionEditor textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 160px;
+  font: inherit;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.2rem);
+  padding: 0.75rem 0.9rem;
+  background: var(--card);
+}
+
+.editorActions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.secondary:hover {
+  background: hsl(220, 14%, 92%);
+}
+
+.analysis {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.1rem);
+  padding: 1rem;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.analysis h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagMatched,
+.tagMissing {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+}
+
+.tagMatched {
+  background: hsl(142, 52%, 92%);
+  color: hsl(142, 45%, 25%);
+  border-color: hsl(142, 40%, 78%);
+}
+
+.tagMissing {
+  background: hsl(4, 75%, 94%);
+  color: hsl(4, 60%, 30%);
+  border-color: hsl(4, 52%, 80%);
+}
+
+.tagWeak {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid hsl(38, 92%, 80%);
+  background: hsl(40, 90%, 92%);
+  color: hsl(30, 60%, 30%);
+}
+
+.evidenceTable {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.2rem);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.evidenceHeader,
+.evidenceRow {
+  display: grid;
+  grid-template-columns: 1.2fr 0.6fr 0.8fr 0.7fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.evidenceHeader {
+  background: var(--secondary);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.evidenceRow:nth-child(even) {
+  background: hsl(40, 33%, 97%);
+}
+
+.evidenceSkill {
+  text-transform: capitalize;
+}
+
+.check {
+  color: hsl(142, 45%, 30%);
+  font-weight: 700;
+}
+
+.dash {
+  color: var(--muted-foreground);
+}
+
+.delete {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: calc(var(--radius) - 0.15rem);
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.16);
+}
+
+.delete:hover {
+  background: hsl(0, 72%, 46%);
+}
+
+@media (max-width: 720px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardContent {
+    grid-template-columns: 1fr;
+  }
+
+  .cardRight {
+    justify-items: start;
+  }
+
+  .delete {
+    width: 100%;
+  }
+
+  .editorActions {
+    flex-direction: column;
+    width: 100%;
+  }
+}

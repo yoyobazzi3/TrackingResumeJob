@@ -26,3 +26,10 @@ export function deleteResume(token: string, resumeId: string) {
     token
   );
 }
+
+export function getResume(
+  token: string,
+  resumeId: string
+): Promise<Resume> {
+  return apiFetch(`/resumes/${resumeId}`, {}, token);
+}

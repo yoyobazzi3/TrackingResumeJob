@@ -1,49 +1,61 @@
 """Job application model for tracking application status."""
 
 import enum
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Enum, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import String, Enum, ForeignKey, Text
+
 from app.core.database import Base
 from app.models.base import UUIDBase
 
+
 class ApplicationStatus(enum.Enum):
-    # Allowed states of an application.
     saved = "saved"
     applied = "applied"
     oa = "oa"
     interview = "interview"
     rejected = "rejected"
 
+
 class JobApplication(UUIDBase, Base):
     __tablename__ = "job_applications"
 
-    # Applicant user.
+    # Applicant user
     user_id: Mapped[str] = mapped_column(
-        ForeignKey("users.id"),
+        ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )
 
-    # Resume used for this application.
-    resume_id: Mapped[str] = mapped_column(
-        ForeignKey("resumes.id"),
-        nullable=False,
+    # Resume used (optional)
+    resume_id: Mapped[str | None] = mapped_column(
+        ForeignKey("resumes.id", ondelete="SET NULL"),
+        nullable=True,
     )
 
-    # Company name.
+    # Company name
     company: Mapped[str] = mapped_column(
         String,
         nullable=False,
     )
 
-    # Role/title applied for.
+    # Role/title applied for
     role: Mapped[str] = mapped_column(
         String,
         nullable=False,
     )
 
-    # Current status of the application.
+    # Application status
     status: Mapped[ApplicationStatus] = mapped_column(
-        Enum(ApplicationStatus),
-        default=ApplicationStatus.saved,
+        Enum(ApplicationStatus, name="applicationstatus"),
         nullable=False,
+        default=ApplicationStatus.saved,
     )
+
+    # Raw job description (important later for AI)
+    job_description: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    # Relationships
+    user = relationship("User", back_populates="job_applications")
+    resume = relationship("Resume", back_populates="job_applications")

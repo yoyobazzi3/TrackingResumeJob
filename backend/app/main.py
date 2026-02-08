@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, users, health, resumes
+from app.api import auth, users, health, resumes, job_applications
 
 app = FastAPI(title="AI Resume Tailor API")
 
@@ -25,6 +25,8 @@ app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(health.router)
 app.include_router(resumes.router)
+app.include_router(job_applications.router)
+
 
 @app.get("/")
 def root():

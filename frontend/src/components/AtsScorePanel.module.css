@@ -1,0 +1,75 @@
+.panel {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.1rem);
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.panel h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.strong,
+.weak,
+.missing {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  text-transform: capitalize;
+}
+
+.strong {
+  background: hsl(142, 52%, 92%);
+  color: hsl(142, 45%, 25%);
+  border-color: hsl(142, 40%, 78%);
+}
+
+.weak {
+  background: hsl(40, 90%, 92%);
+  color: hsl(30, 60%, 30%);
+  border-color: hsl(38, 92%, 80%);
+}
+
+.missing {
+  background: hsl(4, 75%, 94%);
+  color: hsl(4, 60%, 30%);
+  border-color: hsl(4, 52%, 80%);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.table thead {
+  background: var(--secondary);
+}
+
+.table tbody tr:nth-child(even) {
+  background: hsl(40, 33%, 97%);
+}

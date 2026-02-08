@@ -1,6 +1,6 @@
 """Resume model representing a user's resume snapshot."""
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import ForeignKey
 from app.core.database import Base
@@ -25,4 +25,9 @@ class Resume(UUIDBase, Base):
     is_frozen: Mapped[bool] = mapped_column(
         default=False,
         nullable=False,
+    )
+    
+    job_applications = relationship(
+        "JobApplication",
+        back_populates="resume",
     )

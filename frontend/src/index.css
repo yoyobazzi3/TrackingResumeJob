@@ -1,27 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  /* Background & Foreground */
+  --background: hsl(40, 33%, 98%);
+  --foreground: hsl(220, 20%, 14%);
+
+  /* Cards */
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(220, 20%, 14%);
+
+  /* Popover */
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(220, 20%, 14%);
+
+  /* Primary (blue accent) */
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  /* Secondary */
+  --secondary: hsl(220, 14%, 96%);
+  --secondary-foreground: hsl(220, 20%, 14%);
+
+  /* Muted */
+  --muted: hsl(220, 14%, 96%);
+  --muted-foreground: hsl(220, 10%, 46%);
+
+  /* Accent (same as primary) */
+  --accent: hsl(221, 83%, 53%);
+  --accent-foreground: hsl(0, 0%, 100%);
+
+  /* Destructive (red) */
+  --destructive: hsl(0, 72%, 51%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+
+  /* Borders & Inputs */
+  --border: hsl(220, 13%, 91%);
+  --input: hsl(220, 13%, 91%);
+  --ring: hsl(221, 83%, 53%);
+
+  /* Border radius */
+  --radius: 0.75rem;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #e2e8f0;
-  background-color: #0f172a;
+  color: var(--foreground);
+  background-color: var(--background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --bg: #0f172a;
-  --bg-2: #111827;
-  --card: #111827;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --border: #1f2937;
-  --primary: #3b82f6;
-  --primary-600: #2563eb;
-  --danger: #ef4444;
-  --danger-700: #dc2626;
-  --shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
 }
 
 * {
@@ -36,11 +65,10 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(1200px 600px at 10% -20%, #1f2937, transparent 60%),
-    radial-gradient(1200px 600px at 90% 10%, #0b1120, transparent 55%),
-    var(--bg);
-  color: var(--text);
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  margin: 0;
 }
 
 #root {
@@ -54,11 +82,60 @@ body {
   padding: 2rem 1rem;
 }
 
-h1,
-h2,
-h3 {
-  font-family: "Space Grotesk", "Manrope", system-ui, sans-serif;
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-nav__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.app-nav__brand {
+  font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.app-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.app-nav__links a {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+.app-nav__links a.active {
+  background: var(--secondary);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+  .app-nav__inner {
+    flex-wrap: wrap;
+  }
+
+  .app-nav__links {
+    width: 100%;
+    order: 3;
+    justify-content: flex-start;
+  }
 }
 
 a {
@@ -69,18 +146,18 @@ a {
 button {
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 0.6rem 1rem;
   font-size: 0.95rem;
   font-weight: 600;
   background: var(--primary);
-  color: white;
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  color: var(--primary-foreground);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.18);
 }
 
 button:hover {
-  background: var(--primary-600);
+  background: hsl(221, 83%, 48%);
   transform: translateY(-1px);
 }
 
@@ -92,22 +169,24 @@ button:disabled {
 }
 
 button.secondary {
-  background: #1f2937;
-  color: #e2e8f0;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
   box-shadow: none;
+  border-color: var(--border);
 }
 
 button.secondary:hover {
-  background: #334155;
+  background: hsl(220, 14%, 92%);
 }
 
 button.danger {
-  background: var(--danger);
-  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.18);
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.16);
 }
 
 button.danger:hover {
-  background: var(--danger-700);
+  background: hsl(0, 72%, 46%);
 }
 
 input,
@@ -116,19 +195,38 @@ textarea {
   font: inherit;
   color: inherit;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 0.75rem 0.9rem;
-  background: #0b1220;
-  transition: border 120ms ease, box-shadow 120ms ease;
+  background: var(--card);
+  transition: border 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #93c5fd;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 ::placeholder {
-  color: #9aa4b2;
+  color: var(--muted-foreground);
+}
+
+/* Custom scrollbar for resume list */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(220, 14%, 96%);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(220, 13%, 82%);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(220, 13%, 70%);
 }
